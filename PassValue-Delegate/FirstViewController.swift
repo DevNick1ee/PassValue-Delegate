@@ -18,16 +18,16 @@ class FirstViewController: UIViewController {
     
     var delegate: FetchTextDelegate?
     
-    var secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondVC")
+    var secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondVC") as! SecondViewController
 
     @IBOutlet weak var inputTextfield: UITextField!
 
     @IBAction func btnSend(_ sender: UIButton) {
-        
-        self.delegate = secondVC as! SecondViewController
 
         self.present(secondVC, animated: true, completion: nil)
-
+        
+        self.delegate = secondVC
+        
         self.delegate?.fetchText(inputTextfield.text!)
 
     }
